@@ -141,7 +141,7 @@ succMaxWorld [] = 1
 succMaxWorld xs = succ (maximum (rFlat xs))
 
 -- anySerial takes a list of existing ordered pairs representing accessibility between existing worlds and an Eformula
--- it returns a list of ordered pairs of existing worlds which are seen from the world "b" (from chosen EFormula)
+-- it returns a list of ordered pairs of existing worlds which are seen from the world "b" 
 -- if there are none, then it is justified to create a new world, which will be seen from "b"
 
 anySerial :: [RFormula] -> EFormula -> [RFormula]
@@ -151,8 +151,8 @@ anySerial xs (a,b) = [x | x <- xs, fst x == b]
 ---TRANSITIVE
 
 -- applyTransitive takes a list of RFormulas and finds all pairs that meet
--- the criteria of the antecedent of the transitivity rule, then create
--- the succedent of the transitivity rule, and joins it to the inital list
+-- the criteria of the antecedent of the transitivity rule, then 
+-- creates the succedent of the transitivity rule, and joins it to the inital list
 -- auxiliary functions: transitive
 
 applyTransitive :: Tree_m MSeqStorage -> Tree_m MSeqStorage
@@ -161,7 +161,7 @@ applyTransitive (Node_m ((rs,xs),ms) zs) = (Node_m ((rs,xs),ms) (map applyTransi
 
 -- transivtive takes a list of RFormulas
 -- and for every pair of RFormulas theat complies to the antecedent of the transitivity rule
--- it creates a transitive formula and adjoins in to the list of RFormulas
+-- it creates a transitive formula and adjoins it to the list of RFormulas
 -- auxiliary functions: areTransitive, nonRepeated, makeTransPair
 
 transitive :: [RFormula] -> [RFormula]
@@ -181,8 +181,8 @@ nonRepeated a b xs = if elem (makeTransPair a b) xs then False else True
 makeTransPair :: RFormula -> RFormula -> RFormula
 makeTransPair (x,y) (m,n) = (x,n)
 
--- areTransitive takes two RFormulas (a,b) (c,d) and checks whether
--- they comply to the antecedent of the transitivity rule
+-- areTransitive takes two RFormulas (a,b) (c,d) and checks 
+-- whether they comply to the antecedent of the transitivity rule
 
 areTransitive :: RFormula -> RFormula -> Bool
 areTransitive x y = if snd x == fst y then True else False
