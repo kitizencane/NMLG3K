@@ -29,15 +29,6 @@ s5 x = applyEuclidean $ b x
 
 
 -- S4.3 CLOSURE -------
--- *- this section is quite unfortunately called s4.3. closure
--- in effect, the functions below allow s4.3. closure
--- but themselves, they portray the connectedness rule
-
-{- applys43Main :: Tree_m MSeqStorage -> Tree_m MSeqStorage
-applys43Main (Node_m ((rs,s),ms) []) = applys43Aux (s43 rs)
-                                        (Node_m ((rs,s),ms) [])
-applys43Main (Node_m ((rs,xs),ms) zs) = (Node_m ((rs,xs),ms) (map applys43Main zs))
- -}
 
 -- applys43Main executes an s43 closure on a leaf of a tree
 -- auxiliary function: applys43Aux, s43, nonReps43
